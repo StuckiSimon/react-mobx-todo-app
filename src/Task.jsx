@@ -12,12 +12,12 @@ export default observer(({ todo, toggle }) => (
   <Row>
     <Column>
       <Switch checked={todo.done} onClick={e => toggle(todo.id)} data-testid="switch"/>
+      <Badge>{todo.categoryId || '_'}</Badge>
       <InlineText
         fontWeight="bold"
         display="inline"
         children={todo.text}
       />
-      <Badge>{todo.categoryId}</Badge>
     </Column>
   </Row>
 ));
