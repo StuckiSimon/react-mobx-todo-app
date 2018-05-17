@@ -1,8 +1,6 @@
 import store from '../src/TodoStore'
 import Todo from '../src/Todo';
 
-fetch = jest.fn();
-
 describe('TodoStore', () => {
   it('creates new todos', () => {
     expect(store.todos.length).toBe(0)
