@@ -5,6 +5,8 @@ import {
 } from "mobx";
 import Todo from "./Todo";
 
+import { offline, syncing, online } from './state';
+
 const endpoint = 'https://node-js-todo-app.herokuapp.com';
 
 const fetchOptions = {
@@ -13,7 +15,7 @@ const fetchOptions = {
 
 class ObservableTodoStore {
   @observable todos = [];
-  @observable state = 'offline';
+  @observable state = offline;
 
   constructor() {
     fetch(`${endpoint}/todos`, {
@@ -23,13 +25,13 @@ class ObservableTodoStore {
       todos.forEach(({ id, categoryId, text, done}) => {
         this.todos.push(new Todo(id, text, categoryId, done));
       });
-      this.state = 'online';
+      this.state = online;
     });
   }
 
   @action.bound
   addTodo({ id = new Date(), categoryId, text, done}) {
-    this.state = 'syncing';
+    this.state = syncing;
     const todo = new Todo(id, text, categoryId, done);
     this.todos.push(todo);
     fetch(`${endpoint}/todos`, {
@@ -46,13 +48,13 @@ class ObservableTodoStore {
       todo.text = serverTodo.text;
       todo.categoryId = serverTodo.categoryId;
       todo.done = serverTodo.done;
-      this.state = 'online';
+      this.state = online;
     });
   }
 
   @action.bound
   toggle(taskId) {
-    this.state = 'syncing';
+    this.state = syncing;
     const todo = this.todos.find(todo => todo.id === taskId);
 
     todo.toggle();
@@ -62,7 +64,7 @@ class ObservableTodoStore {
       method: 'PATCH',
       body: JSON.stringify(todo)
     }).then(() => {
-      this.state = 'online';
+      this.state = online;
     });
   }
 }
