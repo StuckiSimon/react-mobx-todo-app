@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production --env.mode=production",
     "watch": "webpack-dev-server --mode=development --env.mode=development",
+    "publish": "./publish-docs.sh",
     "test": "jest"
   },
   "repository": {
