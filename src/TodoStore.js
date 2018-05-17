@@ -27,8 +27,27 @@ class ObservableTodoStore {
     });
   }
 
-  addTodo({ id, categoryId, text, done}) {
-    this.todos.push(new Todo(id, text, categoryId, done));
+  @action.bound
+  addTodo({ id = new Date(), categoryId, text, done}) {
+    this.state = 'syncing';
+    const todo = new Todo(id, text, categoryId, done);
+    this.todos.push(todo);
+    fetch(`${endpoint}/todos`, {
+      ...fetchOptions,
+      method: 'POST',
+      body: JSON.stringify({
+        id,
+        categoryId,
+        text,
+        done
+      })
+    }).then((response) => response.json()).then(serverTodo => {
+      todo.id = serverTodo.id;
+      todo.text = serverTodo.text;
+      todo.categoryId = serverTodo.categoryId;
+      todo.done = serverTodo.done;
+      this.state = 'online';
+    });
   }
 
   @action.bound

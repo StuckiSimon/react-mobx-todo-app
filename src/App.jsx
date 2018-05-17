@@ -23,7 +23,7 @@ class App extends React.Component {
         >
           <Header state={TodoStore.state} />
           <Divider />
-          <TaskList todos={TodoStore.todos} toggle={TodoStore.toggle} />
+          <TaskList todos={TodoStore.todos} toggle={TodoStore.toggle} addTodo={TodoStore.addTodo} />
         </Provider>
       </div>
     );
