@@ -24,7 +24,7 @@ class AddTask extends React.Component {
     return (
       <Card>
         <Subhead>Neues Item</Subhead>
-        <Input placeholder="Eintragsname" value={this.state.text} onChange={this.updateText} />
+        <Input placeholder="Was musst du noch erledigen?" value={this.state.text} onChange={this.updateText} />
         <Button children="Hinzufügen" onClick={this.addTodo} />
       </Card>
     );
