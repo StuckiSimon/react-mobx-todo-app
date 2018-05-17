@@ -3,7 +3,7 @@ import React from "react";
 import { Heading, Container, Badge } from "rebass";
 import { observer } from "mobx-react";
 
-import { offline, syncing, online } from './state';
+import { offline, syncing, online } from '../state';
 
 const RedBadge = Badge.extend`
   background-color: #d32f2f;

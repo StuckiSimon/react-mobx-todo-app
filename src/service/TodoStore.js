@@ -5,7 +5,7 @@ import {
 } from "mobx";
 import Todo from "./Todo";
 
-import { offline, syncing, online } from './state';
+import { offline, syncing, online } from '../state';
 
 const endpoint = 'https://node-js-todo-app.herokuapp.com';
 

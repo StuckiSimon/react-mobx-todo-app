@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, Simulate } from 'react-testing-library';
-import Task from '../src/Task';
-import Todo from '../src/Todo';
+import Task from '../src/components/Task';
+import Todo from '../src/service/Todo';
 
 const todoTitle = 'Title';
 const todo = new Todo(1, todoTitle, 2, false);

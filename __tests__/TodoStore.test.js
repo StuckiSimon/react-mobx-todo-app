@@ -1,5 +1,5 @@
-import store from '../src/TodoStore'
-import Todo from '../src/Todo';
+import store from '../src/service/TodoStore'
+import Todo from '../src/service/Todo';
 
 describe('TodoStore', () => {
   it('creates new todos', () => {

@@ -4,7 +4,7 @@ import { Provider, Divider } from "rebass";
 
 import { observer } from "mobx-react";
 
-import TodoStore from "./TodoStore";
+import TodoStore from "../service/TodoStore";
 import TaskList from "./TaskList";
 import Header from "./Header";
 
