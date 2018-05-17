@@ -11,7 +11,7 @@ const InlineText = Text.extend`
 export default observer(({ todo, toggle }) => (
   <Row>
     <Column>
-      <Switch checked={todo.done} onClick={e => toggle(todo.id)} />
+      <Switch checked={todo.done} onClick={e => toggle(todo.id)} data-testid="switch"/>
       <InlineText
         fontWeight="bold"
         display="inline"
