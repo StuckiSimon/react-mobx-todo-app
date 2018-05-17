@@ -10,7 +10,7 @@ const todos = [ todo ]
 describe('the TaskList component', () => {
   it('should render a todo', () => {
     const { getByText, container } = render(<TaskList todos={todos}/>);
-    expect(Array.from(container.children)).toHaveLength(1);
+    expect(container.children).toHaveLength(1);
     expect(getByText(todoTitle)).toBeTruthy();
   })
 })
